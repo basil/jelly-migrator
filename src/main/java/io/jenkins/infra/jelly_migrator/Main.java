@@ -129,6 +129,10 @@ public class Main {
   private static List<Element> findElementsWithName(
       Element rootElement, String elementName, Namespace ns) {
     List<Element> answer = new ArrayList<>();
+    if (Objects.equals(elementName, rootElement.getName())
+        && Objects.equals(ns, rootElement.getNamespace())) {
+      answer.add(rootElement);
+    }
     List<Element> children = rootElement.getChildren();
     for (Element child : children) {
       if (Objects.equals(elementName, child.getName())
